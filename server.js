@@ -10,6 +10,11 @@ const orderRoutes = require("./routes/orderRoutes");
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+// other middlewares/routes...
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
+
 // Middleware
 app.use(cors());
 app.use(express.json());
