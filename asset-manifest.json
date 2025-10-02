@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/fullstack-ecommerce-app/static/css/main.be423e53.css",
-    "main.js": "/fullstack-ecommerce-app/static/js/main.e4296030.js",
+    "main.css": "/fullstack-ecommerce-app/static/css/main.9dec0a01.css",
+    "main.js": "/fullstack-ecommerce-app/static/js/main.2b9b498d.js",
     "static/js/488.fc6cc349.chunk.js": "/fullstack-ecommerce-app/static/js/488.fc6cc349.chunk.js",
     "index.html": "/fullstack-ecommerce-app/index.html",
-    "main.be423e53.css.map": "/fullstack-ecommerce-app/static/css/main.be423e53.css.map",
-    "main.e4296030.js.map": "/fullstack-ecommerce-app/static/js/main.e4296030.js.map",
+    "main.9dec0a01.css.map": "/fullstack-ecommerce-app/static/css/main.9dec0a01.css.map",
+    "main.2b9b498d.js.map": "/fullstack-ecommerce-app/static/js/main.2b9b498d.js.map",
     "488.fc6cc349.chunk.js.map": "/fullstack-ecommerce-app/static/js/488.fc6cc349.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.be423e53.css",
-    "static/js/main.e4296030.js"
+    "static/css/main.9dec0a01.css",
+    "static/js/main.2b9b498d.js"
   ]
 }
