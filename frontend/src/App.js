@@ -1,9 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
 import ProductList from "./ProductList";
 import CartPage from "./CartPage";
-import AdminOrdersPage from "./AdminOrdersPage"; // ✅ Import Admin page
+import AdminOrdersPage from "./AdminOrdersPage"; 
 import { CartProvider, useCart } from "./cartContext";
+import { HashRouter as Router } from "react-router-dom";
+
 
 // Header with Cart Count + Navigation
 function Header() {
@@ -74,8 +76,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<ProductList />} />
             <Route path="/cart" element={<CartPage />} />
-            <Route path="/admin/orders" element={<AdminOrdersPage />} />{" "}
-            {/* ✅ Admin Orders route */}
+            <Route path="/admin/orders" element={<AdminOrdersPage />} />
           </Routes>
         </main>
       </Router>
