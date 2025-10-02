@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "frontend/**" # ✅ Only run when frontend code changes
-      - ".github/workflows/deploy.yml" # also run when workflow file changes
 
 permissions:
   contents: write
@@ -28,11 +25,11 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./frontend
-        run: npm ci
+        run: npm install
 
       - name: Build project
         working-directory: ./frontend
-        run: CI=false npm run build # ✅ disable strict mode
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
