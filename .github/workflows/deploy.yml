@@ -3,10 +3,13 @@ name: Deploy React App to GitHub Pages
 on:
   push:
     branches:
-      - main # Runs when you push to main
+      - main
+    paths:
+      - "frontend/**" # ✅ Only run when frontend code changes
+      - ".github/workflows/deploy.yml" # also run when workflow file changes
 
 permissions:
-  contents: write # Needed to push to gh-pages branch
+  contents: write
 
 jobs:
   build:
@@ -29,7 +32,7 @@ jobs:
 
       - name: Build project
         working-directory: ./frontend
-        run: CI=false npm run build # ✅ disable CI strict mode
+        run: CI=false npm run build # ✅ disable strict mode
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
