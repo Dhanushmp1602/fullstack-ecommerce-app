@@ -4,14 +4,14 @@ export default function AdminOrders() {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/orders")
+    fetch(`${process.env.REACT_APP_API_URL || "http://localhost:4000"}/api/orders`)
       .then((res) => res.json())
       .then((data) => setOrders(data))
       .catch((err) => console.error("Failed to load orders:", err));
   }, []);
 
   const markAsDelivered = async (id) => {
-    await fetch(`http://localhost:4000/api/orders/${id}/status`, {
+    await fetch(`${process.env.REACT_APP_API_URL || "http://localhost:4000"}/api/orders/${id}/status`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status: "Delivered" }),
@@ -73,9 +73,10 @@ export default function AdminOrders() {
                   borderRadius: 8,
                 }}
               >
+                {/* ✅ Show product image */}
                 {i.product?.image && (
                   <img
-                    src={`http://localhost:4000${i.product.image}`}
+                    src={`${process.env.REACT_APP_API_URL || "http://localhost:4000"}${i.product.image}`}
                     alt={i.product?.name}
                     style={{
                       width: 70,
@@ -87,6 +88,8 @@ export default function AdminOrders() {
                     }}
                   />
                 )}
+
+                {/* ✅ Product details */}
                 <div>
                   <strong style={{ fontSize: "1rem" }}>
                     {i.product?.name || "Unknown Product"}
@@ -94,10 +97,24 @@ export default function AdminOrders() {
                   <p style={{ margin: "5px 0", color: "#555" }}>
                     ${i.product?.price?.toFixed(2)} × {i.quantity}
                   </p>
+                  <p style={{ margin: 0, fontWeight: "bold", color: "#000" }}>
+                    = ${(i.product?.price * i.quantity).toFixed(2)}
+                  </p>
                 </div>
               </li>
             ))}
           </ul>
+
+          {/* ✅ Show total order amount */}
+          <h3 style={{ marginTop: 10 }}>
+            Total: $
+            {order.items
+              .reduce(
+                (sum, i) => sum + (i.product?.price || 0) * i.quantity,
+                0
+              )
+              .toFixed(2)}
+          </h3>
 
           {order.status === "Pending" && (
             <button
