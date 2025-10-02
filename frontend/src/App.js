@@ -1,10 +1,9 @@
 import React from "react";
-import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import ProductList from "./ProductList";
 import CartPage from "./CartPage";
 import AdminOrdersPage from "./AdminOrdersPage";
 import { CartProvider, useCart } from "./cartContext";
-
 
 // ✅ Header with Cart Count + Navigation
 function Header() {
@@ -63,7 +62,8 @@ function Header() {
 export default function App() {
   return (
     <CartProvider>
-      <Router>
+      {/* ✅ HashRouter ensures routes work on GitHub Pages */}
+      <HashRouter>
         <Header />
         <main
           style={{
@@ -78,7 +78,7 @@ export default function App() {
             <Route path="/admin/orders" element={<AdminOrdersPage />} />
           </Routes>
         </main>
-      </Router>
+      </HashRouter>
     </CartProvider>
   );
 }
