@@ -1,30 +1,29 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Node
+# Node modules
 node_modules/
 npm-debug.log*
 yarn-error.log
 
-# Env
+# Environment files
 .env
+backend/.env
+frontend/.env
 .env.local
 .env.*.local
 
-# Build
+# Build folders
 dist/
 build/
 
-# OS
-.DS_Store
-Thumbs.db
-
-# IDEs
-.vscode/
-.idea/
-
-# logs
+# Logs
 logs
 *.log
 
-# mac
-*.DS_Store
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
