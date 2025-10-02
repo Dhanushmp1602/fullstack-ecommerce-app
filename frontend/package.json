@@ -1,8 +1,8 @@
 {
-   "name": "frontend",
+  "name": "frontend",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://dhanushmp1602.github.io/fullstack-ecommerce-app/",
+  "homepage": "https://dhanushmp1602.github.io/fullstack-ecommerce-app",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
