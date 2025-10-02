@@ -5,6 +5,7 @@ import CartPage from "./CartPage";
 import AdminOrdersPage from "./AdminOrdersPage";
 import { CartProvider, useCart } from "./cartContext";
 
+
 // ✅ Header with Cart Count + Navigation
 function Header() {
   const { items } = useCart();
