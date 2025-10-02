@@ -2,12 +2,10 @@ import React from "react";
 import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
 import ProductList from "./ProductList";
 import CartPage from "./CartPage";
-import AdminOrdersPage from "./AdminOrdersPage"; 
+import AdminOrdersPage from "./AdminOrdersPage";
 import { CartProvider, useCart } from "./cartContext";
-import { HashRouter as Router } from "react-router-dom";
 
-
-// Header with Cart Count + Navigation
+// ✅ Header with Cart Count + Navigation
 function Header() {
   const { items } = useCart();
   const count = items.reduce((s, i) => s + i.quantity, 0);
