@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import { useCart } from "./cartContext";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CartPage() {
   const { items, updateQuantity, removeItem, total, clear } = useCart();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
-  const [msg, setMsg] = useState("");
   const [lastTotal, setLastTotal] = useState(null);
 
   const placeOrder = async () => {
     if (!firstName || !lastName || !address) {
-      setMsg("All fields are required!");
+      toast.error("⚠️ All fields are required!");
       return;
     }
 
-    // ✅ Prepare payload for backend (only what it needs)
     const orderItems = items.map((i) => ({
       productId: i.productId,
       quantity: i.quantity,
@@ -29,20 +29,20 @@ export default function CartPage() {
           firstName,
           lastName,
           address,
-          items: orderItems, // ✅ send clean items
+          items: orderItems,
         }),
       });
 
       const data = await res.json();
       if (res.ok) {
         setLastTotal(total);
-        setMsg("✅ Order placed successfully!");
+        toast.success("✅ Order placed successfully!");
         clear();
       } else {
-        setMsg(data.error || "Order failed");
+        toast.error(data.error || "❌ Order failed");
       }
     } catch (err) {
-      setMsg("❌ Server error. Please try again.");
+      toast.error("❌ Server error. Please try again.");
     }
   };
 
@@ -116,7 +116,8 @@ export default function CartPage() {
       />
       <button onClick={placeOrder}>Place Order</button>
 
-      {msg && <p style={{ marginTop: 10 }}>{msg}</p>}
+      {/* ✅ Toast container */}
+      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 }
