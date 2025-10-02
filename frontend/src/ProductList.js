@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCardMui";
 import { useCart } from "./cartContext";
-import { Grid, Container, Typography, Box } from "@mui/material";
+import { Container, Typography, Box } from "@mui/material";
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
   const { addToCart } = useCart();
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/products") // ✅ backend endpoint
+    fetch(`${process.env.REACT_APP_API_URL || "http://localhost:4000"}/api/products`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch products");
         return res.json();
@@ -33,10 +33,10 @@ export default function ProductList() {
         sx={{
           display: "grid",
           gridTemplateColumns: {
-            xs: "repeat(2, 1fr)",
-            sm: "repeat(3, 1fr)",
-            md: "repeat(4, 1fr)",
-            lg: "repeat(5, 1fr)", // ✅ like Flipkart/Amazon
+            xs: "repeat(2, 1fr)", // mobile
+            sm: "repeat(3, 1fr)", // tablet
+            md: "repeat(4, 1fr)", // desktop
+            lg: "repeat(5, 1fr)", // large screen (Flipkart/Amazon style)
           },
           gap: 3,
         }}
